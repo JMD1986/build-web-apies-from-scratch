@@ -85,6 +85,7 @@ function setPlayerMoves(player,  m1t,  m1v,
       }
     }
 }function getRoundWinner(round){
+
   switch(round){
     case 1:
       if (playerOneMoveOneType===playerTwoMoveOneType){
@@ -191,18 +192,33 @@ function setPlayerMoves(player,  m1t,  m1v,
   }
 }
 function getGameWinner(){
+  if (
+ playerOneMoveOneType === undefined ||
+ playerOneMoveTwoType === undefined ||
+ playerOneMoveThreeType=== undefined ||
+ playerTwoMoveOneType === undefined ||
+ playerTwoMoveTwoType=== undefined ||
+ playerTwoMoveThreeType=== undefined ||
+ playerOneMoveOneValue === undefined ||
+ playerOneMoveTwoValue === undefined ||
+ playerOneMoveThreeValue=== undefined ||
+ playerTwoMoveOneValue === undefined ||
+ playerTwoMoveThreeValue=== undefined){
+    return null;
+  }
   let player1wins =0;
   let player2wins=0;
-  for (n=1;n<4;n++){
-    if (getRoundWinner(n)==="Player One"){
+  let ties=0;
+  for (x=1;x<4;x++){
+      if (getRoundWinner(x)==="Player One"){
      player1wins++
-  } else if (getRoundWinner(n)==="Player Two"){
+  } else if (getRoundWinner(x)==="Player Two"){
      player2wins++
-  } else if (getRoundWinner(n)==="Tie"){
-    return;
+  } else if (getRoundWinner(x)==="Tie"){
+    ties++;
   }
- }
-//  return player2wins;
+  }
+  //return player2wins;
   if (player1wins>player2wins){
     return "Player One"
   } else if (player1wins<player2wins){
@@ -210,4 +226,5 @@ function getGameWinner(){
   } else if (player1wins===player2wins){
     return "Tie"
   }
+  // console.log([player1wins, player2wins, ties])
 }
