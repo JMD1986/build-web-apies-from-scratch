@@ -190,3 +190,24 @@ function setPlayerMoves(player,  m1t,  m1v,
     return null;
   }
 }
+function getGameWinner(){
+  let player1wins =0;
+  let player2wins=0;
+  for (n=1;n<4;n++){
+    if (getRoundWinner(n)==="Player One"){
+     player1wins++
+  } else if (getRoundWinner(n)==="Player Two"){
+     player2wins++
+  } else if (getRoundWinner(n)==="Tie"){
+    return;
+  }
+ }
+//  return player2wins;
+  if (player1wins>player2wins){
+    return "Player One"
+  } else if (player1wins<player2wins){
+    return "Player Two"
+  } else if (player1wins===player2wins){
+    return "Tie"
+  }
+}
