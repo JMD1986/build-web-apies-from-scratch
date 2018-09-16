@@ -1,24 +1,78 @@
 
-// All code should be written in this file.
-// Twelve global variables representing each player's move types and values (3 move types and 3 move values for each player). These variable names should be in the form of playerOneMoveOneType, playerOneMoveOneValue, etc.
+let playerOneMoveOneType = undefined;
+let playerOneMoveTwoType = undefined;
+let playerOneMoveThreeType= undefined;
+let playerTwoMoveOneType = undefined;
+let playerTwoMoveTwoType= undefined;
+let playerTwoMoveThreeType= undefined;
+let playerOneMoveOneValue = undefined;
+let playerOneMoveTwoValue = undefined;
+let playerOneMoveThreeValue= undefined;
+let playerTwoMoveOneValue = undefined;
+let playerTwoMoveTwoValue = undefined;
+let playerTwoMoveThreeValue= undefined;
+function setPlayerMoves(player,  m1t,  m1v,
+  m2t,   m2v,   m3t,   m3v){
+  if(!player || !m1t || !m1v
+      || !m1t || !m2v|| !m3t
+      || !m3v){
+        console.log("missing input")
+      return
+    }
+  if (validatePlayer(player) &&
+  validateMoveType(m1t) &&
+  validateMoveType(m2t) &&
+  validateMoveType(m3t) &&
+  validateMoveValue(m1v) &&
+  validateMoveValue(m2v) &&
+  validateMoveValue(m3v) &&
+  sumOfValues(m1v,m2v,m3v)){
+  if(player==="Player One"){
+      playerOneMoveOneType=m1t;
+      playerOneMoveOneValue=m1v;
+      playerOneMoveTwoType=m2t;
+      playerOneMoveTwoValue=m2v;
+      playerOneMoveThreeType=m3t;
+      playerOneMoveThreeValue=m3v;
+  }
+  if (player==="Player Two"){
+      playerTwoMoveOneType=m1t;
+      playerTwoMoveOneValue=m1v;
+      playerTwoMoveTwoType=m2t;
+      playerTwoMoveTwoValue=m2v;
+      playerTwoMoveThreeType=m3t;
+      playerTwoMoveThreeValue=m3v;
+  }}
+  function validatePlayer(player){
+    if (player ==="Player One"||player==="Player Two"){
+      return true;
+    } else {
+      return false;
+    }
+  }
+  function validateMoveType(move){
+    if (move ==="rock"||move==="paper" ||move==="scissors"){
+      return true;
+    } else {
+      return false;
+    }
+  }
+  function validateMoveValue(value){
+    if (typeof value === "number" && value>0 && value<100){
+      return true
+    } else {
+      console.log("invaled value")
+      return false
 
-// A function called setPlayerMoves, which will take a string representing a player (in the form of 'Player One' or 'Player Two'), three move types, and three move values, and set the correct global move variables. The method signature for this function should be as follows: setPlayerMoves(player, moveOneType, moveOneValue, moveTwoType, moveTwoValue, moveThreeType, moveThreeValue).
-
-// A function called getRoundWinner, which takes a round number (1, 2, or 3), compares both player's move types and values for that round, and returns the appropriate winner ('Player One', 'Player Two', or 'Tie')
-
-// A function called getGameWinner, which compares both player's move types and values for the whole game and returns the appropriate winner ('Player One', 'Player Two', or 'Tie')
-
-// Bonus: A function called setComputerMoves, which chooses three random moves for player two. The move type for each move should be completely random, and the move values should be random but add up to 99.
-
-const playerOneMoveOneType = undefined;
-const playerOneMoveTwoType = undefined;
-const playerOneMoveThreeType= undefined;
-const playerTwoMoveOneType = undefined;
-const playerTwoMoveTwoType= undefined;
-const playerTwoMoveThreeType= undefined;
-const playerOneMoveOneValue = undefined;
-const playerOneMoveTwoValue = undefined;
-const playerOneMoveThreeValue= undefined;
-const playerTwoMoveOneValue = undefined;
-const playerTwoMoveTwoValue = undefined;
-const playerTwoMoveThreeValue= undefined;
+    }
+  }
+    function sumOfValues(val1,val2,val3){
+      if (val1+val2+val3>99){
+        console.log("must be less than 99")
+        return false
+      }
+      else {
+        return true
+      }
+  }
+}
