@@ -11,15 +11,13 @@ let playerOneMoveThreeValue= undefined;
 let playerTwoMoveOneValue = undefined;
 let playerTwoMoveTwoValue = undefined;
 let playerTwoMoveThreeValue= undefined;
+
+
 function setPlayerMoves(player,  m1t,  m1v,
   m2t,   m2v,   m3t,   m3v){
-  if(!player || !m1t || !m1v
-      || !m1t || !m2v|| !m3t
-      || !m3v){
-        console.log("missing input")
-      return
-    }
-  if (validatePlayer(player) &&
+
+  if ( checkIfExists &&
+    validatePlayer(player) &&
   validateMoveType(m1t) &&
   validateMoveType(m2t) &&
   validateMoveType(m3t) &&
@@ -74,5 +72,121 @@ function setPlayerMoves(player,  m1t,  m1v,
       else {
         return true
       }
+  }
+  function checkIfExists(){
+    if(!player || !m1t || !m1v
+        || !m1t || !m2v|| !m3t
+        || !m3v){
+          console.log("missing input")
+        return false
+      }
+      else {
+        return true
+      }
+    }
+}function getRoundWinner(round){
+  switch(round){
+    case 1:
+      if (playerOneMoveOneType===playerTwoMoveOneType){
+          if (playerOneMoveOneValue===playerTwoMoveOneValue){
+            return "Tie"
+          }
+         if (playerOneMoveOneValue>playerTwoMoveOneValue){
+           return "Player One"
+         }else{
+           return "Player Two"
+         }
+      }
+       if (playerOneMoveOneType === "rock"){
+        if (playerTwoMoveOneType==="scissors"){
+          return "Player One";
+        } else {
+          return "Player Two"
+        }
+      }
+      if (playerOneMoveOneType === "paper"){
+        if (playerTwoMoveOneType==="scissors"){
+          return "Player Two";
+        } else {
+          return "Player One"
+        }
+      }
+      if (playerOneMoveOneType === "scissors"){
+        if (playerTwoMoveOneType==="paper"){
+          return "Player One";
+        } else {
+          return "Player Two"
+        }
+      }
+
+    break;
+    case 2:
+    if (playerOneMoveTwoType===playerTwoMoveTwoType){
+      if (playerOneMoveTwoValue===playerTwoMoveTwoValue){
+            return "Tie"
+          }
+         if (playerOneMoveTwoValue>playerTwoMoveTwoValue){
+           return "Player One"
+         }else{
+           return "Player Two"
+         }
+      }
+      if (playerOneMoveTwoType === "rock"){
+        if (playerTwoMoveTwoType==="scissors"){
+          return "Player One";
+        } else {
+          return "Player Two"
+        }
+      }
+      if (playerOneMoveTwoType === "paper"){
+        if (playerTwoMoveTwoType==="scissors"){
+          return "Player Two";
+        } else {
+          return "Player One"
+        }
+      }
+      if (playerOneMoveTwoType === "scissors"){
+        if (playerTwoMoveTwoType==="paper"){
+          return "Player One";
+        } else {
+          return "Player Two"
+        }
+      }
+    break;
+    case 3:
+    if (playerOneMoveThreeType===playerTwoMoveThreeType){
+      if (playerOneMoveThreeValue===playerTwoMoveThreeValue){
+            return "Tie"
+          }
+         if (playerOneMoveThreeValue>playerTwoMoveThreeValue){
+           return "Player One"
+         }else{
+           return "Player Two"
+         }
+      }
+      if (playerOneMoveThreeType === "rock"){
+        if (playerTwoMoveThreeType==="scissors"){
+          return "Player One";
+        } else {
+          return "Player Two"
+        }
+      }
+      if (playerOneMoveThreeType === "paper"){
+        if (playerTwoMoveThreeType==="scissors"){
+          return "Player Two";
+        } else {
+          return "Player One"
+        }
+      }
+      if (playerOneMoveThreeType === "scissors"){
+        if (playerTwoMoveThreeType==="paper"){
+          return "Player One";
+        } else {
+          return "Player Two"
+        }
+      }
+    break;
+    default:
+    return null;
   }
 }
