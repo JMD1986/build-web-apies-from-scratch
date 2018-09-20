@@ -47,3 +47,42 @@ function toggleDrum(drum, num){
     drum[num]=!drum[num];
   }
 }
+function clear(drum){
+  switch (drum){
+  case "kicks":
+  drum = kicks;
+  kicks = [
+false, false, false, false,
+false, false, false, false,
+false, false, false, false,
+false, false, false, false ]
+  break;
+  case "snares":
+  drum = snares;
+  snares = [
+false, false, false, false,
+false, false, false, false,
+false, false, false, false,
+false, false, false, false ]
+  break;
+  case "hiHats":
+  drum = hiHats;
+  hiHats = [
+false, false, false, false,
+false, false, false, false,
+false, false, false, false,
+false, false, false, false ]
+  break;
+  case "rideCymbals":
+  drum = rideCymbals;
+  rideCymbals = [
+false, false, false, false,
+false, false, false, false,
+false, false, false, false,
+false, false, false, false ]
+  break;
+  default:
+  console.log( "incorrect drum choice")
+  return null;
+}
+}
