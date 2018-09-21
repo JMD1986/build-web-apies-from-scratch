@@ -1,88 +1,47 @@
+const createEmptyDrumArray = () => new Array(16).fill(false);
+
 // Drum Arrays
-let kicks = [
-false, false, false, false,
-false, false, false, false,
-false, false, false, false,
-false, false, false, false
-]
-let snares = [
-false, false, false, false,
-false, false, false, false,
-false, false, false, false,
-false, false, false, false ]
-let hiHats = [
-false, false, false, false,
-false, false, false, false,
-false, false, false, false,
-false, false, false, false ]
-let rideCymbals = [
-false, false, false, false,
-false, false, false, false,
-false, false, false, false,
-false, false, false, false ]
+let kicks = createEmptyDrumArray();
+let snares = createEmptyDrumArray();
+let hiHats = createEmptyDrumArray();
+let rideCymbals = createEmptyDrumArray();
 
-
-function toggleDrum(drum, num){
-
-  if (num>16 || num<0){
-    return null
-  }else{
-   switch (drum){
-  case "kicks":
-  drum = kicks;
-  break;
-  case "snares":
-  drum = snares;
-  break;
-  case "hiHats":
-  drum = hiHats;
-  break;
-  case "rideCymbals":
-  drum = rideCymbals;
-  break;
-  default:
-  console.log( "incorrect drum choice")
-  return null;
-}
-    drum[num]=!drum[num];
+const getDrumArrayByName = (name) => {
+  switch (name) {
+    case 'kicks':
+      return kicks;
+    case 'snares':
+      return snares;
+    case 'hiHats':
+      return hiHats;
+    case 'rideCymbals':
+      return rideCymbals;
+    default:
+      return;
   }
-}
-function clear(drum){
-  switch (drum){
-  case "kicks":
-  drum = kicks;
-  kicks = [
-false, false, false, false,
-false, false, false, false,
-false, false, false, false,
-false, false, false, false ]
-  break;
-  case "snares":
-  drum = snares;
-  snares = [
-false, false, false, false,
-false, false, false, false,
-false, false, false, false,
-false, false, false, false ]
-  break;
-  case "hiHats":
-  drum = hiHats;
-  hiHats = [
-false, false, false, false,
-false, false, false, false,
-false, false, false, false,
-false, false, false, false ]
-  break;
-  case "rideCymbals":
-  drum = rideCymbals;
-  rideCymbals = [
-false, false, false, false,
-false, false, false, false,
-false, false, false, false,
-false, false, false, false ]
-  break;
-  default:
-  console.log( "incorrect drum choice")
-  return null;
-}
-}
+};
+
+const toggleDrum = (drumArrayName, index) => {
+  const drums = getDrumArrayByName(drumArrayName);
+  if (!drums || index > 15 || index < 0) {
+    return;
+  }
+  drums[index] = !drums[index];
+};
+
+const clear = (drumArrayName) => {
+  const drums = getDrumArrayByName(drumArrayName);
+  if (drums) {
+    drums.fill(false);
+  }
+};
+
+const invert = (drumArrayName) => {
+  const drums = getDrumArrayByName(drumArrayName);
+  if (!drums) {
+    return;
+  }
+  for (let i = 0; i < drums.length; i++) {
+    drums[i] = !drums[i];
+  }
+};
