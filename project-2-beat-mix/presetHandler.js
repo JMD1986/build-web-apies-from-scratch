@@ -14,7 +14,23 @@ const createOrUpdatePreset = (index, array) => {
 
 // Complete this function:
 const presetHandler = (method, index, newPresetArray) => {
-
+  if (method==="GET"){
+    let preset = getPreset(index);
+    if (preset){
+      return [200, preset]
+    } else {
+      return [404]
+    }
+  } else if (method==="PUT"){
+    const newPreset = createOrUpdatePreset(index, newPresetArray);
+    if (newPreset){
+      return [200,newPreset]
+    }else {
+      return [404]
+    }
+  } else{
+    return [400]
+  }
 
 };
 
